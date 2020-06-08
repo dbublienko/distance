@@ -2,17 +2,24 @@
 *::before,
 *::after {
     box-sizing: border-box;
+    outline: none;
 }
 
 body {
     font-family: sans-serif;
     background: #f5f5f5;
+    padding-top: 46px;
 }
 
 .header {
     padding-top: 6px;
     padding-bottom: 6px;
     background: #0050b3;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 99;
 }
 
 .header-block {
@@ -21,6 +28,24 @@ body {
     justify-content: space-between;
     max-width: 1200px;
     margin: auto;
+}
+
+.m-menu {
+    display: none;
+    justify-content: space-around;
+    flex-direction: column;
+    border: none;
+    width: 32px;
+    height: 32px;
+    background-color: transparent;
+    margin-left: 12px;
+    padding: 0;
+}
+
+.m-menu .line {
+    width: 100%;
+    height: 1px;
+    background-color: #ffffff;
 }
 
 .search-input {
@@ -80,7 +105,12 @@ body {
 }
 
 .user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
     margin-right: 8px;
+    object-fit: cover;
+    cursor: pointer;
 }
 
 .user-name {
@@ -99,6 +129,23 @@ body {
     display: flex;
     align-items: center;
     margin-left: 17px;
+    position: relative;
+}
+
+.notification {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f5222d;
+    border: 1px solid #ffffff;
+    border-radius: 16px;
+    color: #ffffff;
+    font-size: 12px;
 }
 
 .header-icon {
@@ -154,6 +201,11 @@ body {
     margin-bottom: 24px;
 }
 
+.nav-group .post-header-button {
+    display: none;
+    margin-left: auto;
+}
+
 .nav-link {
     padding: 4px 8px;
     display: flex;
@@ -166,7 +218,17 @@ body {
     line-height: 22px;
 }
 
-.nav-link.active {
+.nav-link:not(.nav-dropdown):hover {
+    background: #ffffff;
+    color: #262626;
+    font-weight: bold;
+}
+
+.nav-link:not(.nav-dropdown):hover .post-header-button {
+    display: initial;
+}
+
+.enable {
     background: #ffffff;
     color: #262626;
     font-weight: bold;
@@ -184,6 +246,16 @@ body {
     color: #262626;
     margin-bottom: 4px;
     margin-top: 0;
+}
+
+.nav-dropdown {
+    margin-left: 4px;
+}
+
+.nav-dropdown .nav-text {
+    color: #1890ff;
+    text-decoration: none;
+    margin-left: 12px;
 }
 
 .main-feed {
@@ -223,7 +295,9 @@ body {
 
 .create-post-input {
     max-width: 500px;
+    width: 100%;
     padding-top: 8px;
+    outline: none;
 }
 
 .create-post-footer {
@@ -249,6 +323,7 @@ body {
     display: flex;
     align-items: center;
     margin-right: 8px;
+    cursor: pointer;
 }
 
 .tag-icon {
@@ -272,6 +347,7 @@ body {
 .post-header-button {
     background-color: #ffffff;
     border: none;
+    cursor: pointer;
 }
 
 .post-header .user-avatar {
@@ -330,6 +406,8 @@ body {
 }
 
 .post-image {
+    display: block;
+    margin: auto;
     border: 1px solid #bfbfbf;
     border-radius: 4px;
     max-width: 100%;
@@ -346,6 +424,11 @@ body {
     line-height: 22px;
     color: #595959;
     margin-left: 4px;
+    cursor: pointer;
+}
+
+.likes-icon {
+    cursor: pointer;
 }
 
 .post-footer {
@@ -359,6 +442,7 @@ body {
     border: none;
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 
 .post-button-text {
@@ -442,6 +526,7 @@ body {
     margin-bottom: 16px;
 }
 
+.story-image-add,
 .story-image {
     display: flex;
     align-items: center;
@@ -460,6 +545,10 @@ body {
     margin-right: 12px;
 }
 
+.story-image {
+    border: 3px solid #1890ff;
+}
+
 .story-title {
     font-weight: 600;
     font-size: 14px;
@@ -476,9 +565,276 @@ body {
     word-wrap: break-word;
 }
 
-.figma {
-    background-image: url();
+.story-dropdown-text {
+    color: #0050B3 !important;
+}
+
+.concuria {
+    background-image: url(../img/concuria.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
 }
+
+.figma {
+    background-image: url(../img/figma.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.ant-design {
+    background-image: url(../img/ant-design.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: cover;
+}
+
+.birthday-notification {
+    margin-top: 16px;
+    padding: 16px;
+    background: #ffffff;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+}
+
+.birthday {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.birthday-icon {
+    margin-right: 8px;
+}
+
+.birthday-text {
+    font-size: 14px;
+    color: #595959;
+    margin-top: 2px;
+}
+
+.birthday-name {
+    font-weight: 600;
+    color: #0050b3;
+}
+
+.fanpage {
+    margin-top: 16px;
+    background: #ffffff;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+}
+
+.fanpage-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 9px 16px;
+    border-bottom: 1px solid #d9d9d9;
+}
+
+.fanpage-header-title {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 22px;
+    color: #595959;
+}
+
+.fanpage-body {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin: 16px;
+}
+
+.fanpage-body-image {
+    background-image: url(../img/concuria.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: cover;
+    width: 48px;
+    height: 48px;
+    border: 1px solid #bfbfbf;
+    border-radius: 50%;
+    margin-right: 12px;
+}
+
+.fanpage-body-text,
+.fanpage-body-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.fanpage-body-title {
+    margin-bottom: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 22px;
+    color: #0050b3;
+}
+
+.fanpage-body-notification {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 22px;
+    color: #8c8c8c;
+    margin-bottom: 2px;
+}
+
+.fanpage-body-message {
+    margin-left: 4px;
+    vertical-align: middle;
+}
+
+.fanpage-body-counter {
+    width: 17px;
+    height: 22px;
+    background: #f5f5f5;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    opacity: 0.85;
+    font-size: 12px;
+    line-height: 20px;
+    text-align: center;
+    color: #595959;
+    margin-left: 5px;
+}
+
+.fanpage-footer {
+    margin: 16px;
+    margin-bottom: 0;
+    padding-bottom: 16px;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+.fanpage-footer-form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.fanpage-footer-label {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 0;
+}
+
+.fanpage-footer-label:nth-child(1) {
+    background: #ffffff;
+    border: 1px solid #d9d9d9;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.fanpage-footer-label:nth-child(2) {
+    background: #ffffff;
+    border: 1px solid #d9d9d9;
+}
+
+.fanpage-footer-label:nth-child(3) {
+    background: #ffffff;
+    border: 1px solid #d9d9d9;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.radio-text {
+    font-size: 16px;
+    line-height: 24px;
+    color: #595959;
+}
+
+.fanpage-footer-result {
+    text-align: center;
+}
+
+.result-title {
+    display: block;
+    font-size: 24px;
+    line-height: 32px;
+    color: #262626;
+    margin-bottom: 4px;
+}
+
+.result-subtitle {
+    display: block;
+    font-size: 14px;
+    line-height: 22px;
+    color: #8c8c8c;
+}
+
+@media (max-width: 1250px) {
+    .container {
+        justify-content: flex-start;
+        width: 95%;
+    }
+
+    .right-sidebar {
+        display: none;
+    }
+
+    .header-block {
+        width: 95%;
+    }
+
+    .menu-sidebar {
+        max-width: unset;
+        width: 30%;
+    }
+
+    .main-feed {
+        max-width: unset;
+        width: 70%;
+    }
+}
+
+@media (max-width: 960px) {
+    .header .user {
+        display: none;
+    }
+
+    .navigation-panel {
+        display: none;
+    }
+}
+
+@media (max-width: 840px) {
+    .menu-sidebar {
+        position: fixed;
+        left: 0;
+        top: 25px;
+        width: 100%;
+        height: 100%;
+        max-width: 250px;
+        background-color: #f1f1f1;
+        padding-top: 12px;
+        padding-left: 2%;
+        transform: translateX(-100%);
+        transition: transform 0.3s;
+    }
+
+    .menu-sidebar.active {
+        transform: translateX(0%);
+    }
+
+    .m-menu {
+        display: flex;
+    }
+}
+
+@media (max-width: 760px) {
+    .search {
+        display: none;
+    }
+}
+
